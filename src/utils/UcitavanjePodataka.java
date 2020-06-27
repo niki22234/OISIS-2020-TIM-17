@@ -7,6 +7,32 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UcitavanjePodataka {
+	
+	public static void ucitajPodatkeKorisnika() {
+        try {
+            File korisnici = new File("korisnici.apoteka");
+            if (korisnici.exists()) {
+                FileInputStream fileInputStream = new FileInputStream("korisnici.apoteka");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                ArrayList<Korisnik> listaKorisnika = (ArrayList<Korisnik>) objectInputStream.readObject();
+                Korisnici.getInstance().setPodaci(listaKorisnika);
+                objectInputStream.close();
+                fileInputStream.close();
+            } else {
+                Korisnik Admin = new Korisnik("Admin", "Admin", "A1", "A2", TipKorisnika.ADMINISTRATOR);
+                FileOutputStream fileOutputStream = new FileOutputStream("korisnici.apoteka");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                ArrayList<Korisnik> listaKorisnika = new ArrayList<>();
+                listaKorisnika.add(Admin);
+                objectOutputStream.writeObject(listaKorisnika);
+                objectOutputStream.close();
+                fileOutputStream.close();
+                ucitajPodatkeKorisnika();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void ucitajPodatkeLekova() {
         try {

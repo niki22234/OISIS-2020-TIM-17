@@ -17,6 +17,7 @@ public class Main {
             @Override
             public void run() {
                 try {
+                	 UcitavanjePodataka.ucitajPodatkeKorisnika();
                 	UcitavanjePodataka.ucitajPodatkeLekova();
                     GlavniEkran glavniEkran = GlavniEkran.getInstance();
                     glavniEkran.setSize(17*50, 9*50);

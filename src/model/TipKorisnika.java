@@ -1,5 +1,7 @@
 package model;
 
-public class TipKorisnika {
-
+public enum TipKorisnika {
+    LEKAR,
+    APOTEKAR,
+    ADMINISTRATOR
 }
