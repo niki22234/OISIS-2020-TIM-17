@@ -1,5 +1,6 @@
 package application;
 
+import utils.UcitavanjePodataka;
 import view.GlavniEkran;
 import view.Login;
 
@@ -16,6 +17,7 @@ public class Main {
             @Override
             public void run() {
                 try {
+                	UcitavanjePodataka.ucitajPodatkeLekova();
                     GlavniEkran glavniEkran = GlavniEkran.getInstance();
                     glavniEkran.setSize(17*50, 9*50);
                     Login login = new Login(glavniEkran);
