@@ -17,12 +17,13 @@ public class Main {
             @Override
             public void run() {
                 try {
-                	 UcitavanjePodataka.ucitajPodatkeKorisnika();
-                	UcitavanjePodataka.ucitajPodatkeLekova();
-                	UcitavanjePodataka.ucitajPodatkeRecepta();
+                    UcitavanjePodataka.ucitajPodatkeKorisnika();
+                    UcitavanjePodataka.ucitajPodatkeLekova();
+                    UcitavanjePodataka.ucitajPodatkeRecepta();
                     UcitavanjePodataka.ucitajPodatkeProdaja();
+                    UcitavanjePodataka.ucitajPodatkeKupaca();
                     GlavniEkran glavniEkran = GlavniEkran.getInstance();
-                    glavniEkran.setSize(17*50, 9*50);
+                    glavniEkran.setSize(17*70, 9*70);
                     Login login = new Login(glavniEkran);
                     login.setVisible(true);
                 } catch (Exception e) {
@@ -30,13 +31,5 @@ public class Main {
                 }
             }
         });
-    }
-
-    public static Color getSvetloPlava() {
-        return svetloPlava;
-    }
-
-    public static Color getTamnoPlava() {
-        return tamnoPlava;
     }
 }

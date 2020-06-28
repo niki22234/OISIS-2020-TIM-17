@@ -7,18 +7,19 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CuvanjePodataka {
-	
-	 public static void sacuvajKorisnike(ArrayList<Korisnik> korisnici) {
-	        try {
-	            FileOutputStream fileOutputStream = new FileOutputStream("korisnici.apoteka");
-	            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-	            objectOutputStream.writeObject(korisnici);
-	            objectOutputStream.close();
-	            fileOutputStream.close();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+
+    public static void sacuvajKorisnike(ArrayList<Korisnik> korisnici) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("korisnici.apoteka");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(korisnici);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void sacuvajLekove(ArrayList<Lek> lekovi) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("lekovi.apoteka");
@@ -41,7 +42,8 @@ public class CuvanjePodataka {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } 
+    }
+
     public static void sacuvajProdaje(ArrayList<Prodaja> prodaje) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("prodaje.apoteka");
@@ -53,5 +55,16 @@ public class CuvanjePodataka {
             e.printStackTrace();
         }
     }
-}
 
+    public static void sacuvajKupce(ArrayList<Kupac> kupci) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("kupci.apoteka");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(kupci);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

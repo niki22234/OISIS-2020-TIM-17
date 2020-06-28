@@ -7,8 +7,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UcitavanjePodataka {
-	
-	public static void ucitajPodatkeKorisnika() {
+
+    public static void ucitajPodatkeKorisnika() {
         try {
             File korisnici = new File("korisnici.apoteka");
             if (korisnici.exists()) {
@@ -57,6 +57,7 @@ public class UcitavanjePodataka {
             e.printStackTrace();
         }
     }
+
     public static void ucitajPodatkeRecepta() {
         try {
             File lekovi = new File("recepti.apoteka");
@@ -105,6 +106,28 @@ public class UcitavanjePodataka {
             e.printStackTrace();
         }
     }
- 
-}
 
+    public static void ucitajPodatkeKupaca() {
+        try {
+            File lekovi = new File("kupci.apoteka");
+            if (lekovi.exists()) {
+                FileInputStream fileInputStream = new FileInputStream("kupci.apoteka");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                ArrayList<Kupac> listaKupaca = (ArrayList<Kupac>) objectInputStream.readObject();
+                GlavniEkran.getInstance().setSviKupci(listaKupaca);
+                objectInputStream.close();
+                fileInputStream.close();
+            } else {
+                FileOutputStream fileOutputStream = new FileOutputStream("kupci.apoteka");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                ArrayList<Kupac> listaKupaca = new ArrayList<>();
+                objectOutputStream.writeObject(listaKupaca);
+                objectOutputStream.close();
+                fileOutputStream.close();
+                ucitajPodatkeKupaca();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
