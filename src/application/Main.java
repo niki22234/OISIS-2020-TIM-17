@@ -19,6 +19,8 @@ public class Main {
                 try {
                 	 UcitavanjePodataka.ucitajPodatkeKorisnika();
                 	UcitavanjePodataka.ucitajPodatkeLekova();
+                	UcitavanjePodataka.ucitajPodatkeRecepta();
+                    UcitavanjePodataka.ucitajPodatkeProdaja();
                     GlavniEkran glavniEkran = GlavniEkran.getInstance();
                     glavniEkran.setSize(17*50, 9*50);
                     Login login = new Login(glavniEkran);

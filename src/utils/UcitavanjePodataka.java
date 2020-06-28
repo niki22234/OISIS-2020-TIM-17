@@ -57,5 +57,54 @@ public class UcitavanjePodataka {
             e.printStackTrace();
         }
     }
-    
+    public static void ucitajPodatkeRecepta() {
+        try {
+            File lekovi = new File("recepti.apoteka");
+            if (lekovi.exists()) {
+                FileInputStream fileInputStream = new FileInputStream("recepti.apoteka");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                ArrayList<Recept> listaRecepta = (ArrayList<Recept>) objectInputStream.readObject();
+                Recepti.getInstance().setPodaci(listaRecepta);
+                objectInputStream.close();
+                fileInputStream.close();
+            } else {
+                FileOutputStream fileOutputStream = new FileOutputStream("recepti.apoteka");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                ArrayList<Recept> listaRecepta = new ArrayList<>();
+                objectOutputStream.writeObject(listaRecepta);
+                objectOutputStream.close();
+                fileOutputStream.close();
+                ucitajPodatkeRecepta();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void ucitajPodatkeProdaja() {
+        try {
+            File prodaje = new File("prodaje.apoteka");
+            if (prodaje.exists()) {
+                FileInputStream fileInputStream = new FileInputStream("prodaje.apoteka");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                ArrayList<Prodaja> sveProdaje = (ArrayList<Prodaja>) objectInputStream.readObject();
+                GlavniEkran.setSveProdaje(sveProdaje);
+                objectInputStream.close();
+                fileInputStream.close();
+            } else {
+                FileOutputStream fileOutputStream = new FileOutputStream("prodaje.apoteka");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                ArrayList<Prodaja> sveProdaje = new ArrayList<>();
+                objectOutputStream.writeObject(sveProdaje);
+                objectOutputStream.close();
+                fileOutputStream.close();
+                ucitajPodatkeProdaja();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+ 
 }
+

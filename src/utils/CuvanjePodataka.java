@@ -31,5 +31,27 @@ public class CuvanjePodataka {
         }
     }
 
-    
+    public static void sacuvajRecepte(ArrayList<Recept> recepti) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("recepti.apoteka");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(recepti);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+    public static void sacuvajProdaje(ArrayList<Prodaja> prodaje) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("prodaje.apoteka");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(prodaje);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
+
