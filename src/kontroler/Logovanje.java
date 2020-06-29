@@ -16,6 +16,12 @@ public class Logovanje implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        int pokusaj = dijalog.getPoksaj();
+        pokusaj++;
+        dijalog.setPoksaj(pokusaj);
+        if(dijalog.getPoksaj() > 3) {
+            dijalog.dispose();
+        }
         if(Login.autentikacija(dijalog.getUsername(), dijalog.getPassword()) == true) {
             dijalog.dispose();
             GlavniEkran.getInstance().setVisible(true);

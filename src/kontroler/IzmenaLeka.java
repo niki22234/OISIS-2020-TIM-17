@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class IzmenaLeka implements ActionListener {
 
     private DijalogIzmeniLek dijalog;
-    private int red;
 
     public IzmenaLeka(DijalogIzmeniLek dijalog) {
         this.dijalog = dijalog;
@@ -32,11 +31,6 @@ public class IzmenaLeka implements ActionListener {
         }
         float cena = Float.valueOf(dijalog.getCenaUnos().getText());
         ArrayList<Lek> lista = Lekovi.getInstance().getLista();
-        for(int j = 0; j < model.getRowCount(); j++) {
-            if(model.getValueAt(j,2).toString().equals(sifraLeka)) {
-                red = j;
-            }
-        }
         for(int i = 0; i < lista.size(); i++) {
             if(lista.get(i).getSifra().equals(sifraLeka)) {
                 if(!(imeLeka.isEmpty())) {

@@ -4,6 +4,7 @@ import application.Main;
 import kontroler.SacuvajKorisnike;
 import kontroler.SacuvajLekove;
 import model.Korisnik;
+import model.Kupac;
 import model.Prodaja;
 import model.TipKorisnika;
 
@@ -38,10 +39,12 @@ public class GlavniEkran extends JFrame {
     private JLabel zbirProdajeVrednost;
 
     private static ArrayList<Prodaja> sveProdaje;
+    private static ArrayList<Kupac> sviKupci;
 
     public GlavniEkran() {
         this.setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setBackground(Main.nebeskoPlava);
     }
 
     public void postaviGUI() {
@@ -51,9 +54,9 @@ public class GlavniEkran extends JFrame {
         logoIkonica = new JLabel(logo);
         meni.add(logoIkonica);
         ImageIcon pretragaIkonica = new ImageIcon("images/search1.png");
-        Image image = pretragaIkonica.getImage(); // transform it
-        Image newimg = image.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        pretragaIkonica = new ImageIcon(newimg);  // transform it back
+        Image image = pretragaIkonica.getImage();
+        Image newimg = image.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
+        pretragaIkonica = new ImageIcon(newimg);
         pretraga = new JButton(pretragaIkonica);
         pretraga.setBackground(Main.tamnoPlava);
         pretraga.setForeground(Color.WHITE);
@@ -70,6 +73,12 @@ public class GlavniEkran extends JFrame {
         });
         meni.add(pretraga);
         registracijaKartice = new JButton("Registracija Kartice");
+        registracijaKartice.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DijalogDodajKarticu dijalog = new DijalogDodajKarticu(GlavniEkran.getInstance());
+            }
+        });
         registracijaKartice.setBackground(Main.tamnoPlava);
         registracijaKartice.setForeground(Color.WHITE);
         meni.add(registracijaKartice);
@@ -79,6 +88,8 @@ public class GlavniEkran extends JFrame {
         meni.add(login);
         if(trenutniKorisnik != null & trenutniKorisnik.getTipKorisnika().equals(TipKorisnika.APOTEKAR)) {
             korpa = new JButton("Korpa");
+            korpa.setBackground(Main.tamnoPlava);
+            korpa.setForeground(Color.WHITE);
             korpa.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -105,6 +116,7 @@ public class GlavniEkran extends JFrame {
 
         this.setResizable(true);
         pack();
+
     }
 
     public void tabele() {
@@ -114,7 +126,6 @@ public class GlavniEkran extends JFrame {
         if(trenutniKorisnik != null && trenutniKorisnik.getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR)) {
             //korisnici ako je korisnik administrator
             JPanel korisniciGlavni = new JPanel();
-            korisniciGlavni.setBackground(Main.tamnoPlava);
             korisniciGlavni.setLayout(new BoxLayout(korisniciGlavni, BoxLayout.PAGE_AXIS));
             JPanel top = new JPanel();
             top.setBackground(Main.tamnoPlava);
@@ -157,7 +168,6 @@ public class GlavniEkran extends JFrame {
         }
         //lekovi
         JPanel lekoviGlavni = new JPanel();
-        lekoviGlavni.setBackground(Main.tamnoPlava);
         lekoviGlavni.setLayout(new BoxLayout(lekoviGlavni, BoxLayout.PAGE_AXIS));
         JPanel lekoviTop = new JPanel();
         lekoviTop.setBackground(Main.tamnoPlava);
@@ -323,5 +333,17 @@ public class GlavniEkran extends JFrame {
 
     public JTabbedPane getTabovi() {
         return tabovi;
+    }
+
+    public static ArrayList<Kupac> getSviKupci() {
+        return sviKupci;
+    }
+
+    public static void setSviKupci(ArrayList<Kupac> sviKupci) {
+        GlavniEkran.sviKupci = sviKupci;
+    }
+
+    public JLabel getPopustBaner() {
+        return popustBaner;
     }
 }

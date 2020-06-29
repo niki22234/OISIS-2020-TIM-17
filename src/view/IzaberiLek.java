@@ -1,5 +1,6 @@
 package view;
 
+import application.Main;
 import model.Lek;
 import model.Lekovi;
 
@@ -18,10 +19,12 @@ public class IzaberiLek extends JDialog {
     public IzaberiLek(DodajRecept parent) {
         super(parent, "Izaberi Lek", true);
         this.setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.fill = GridBagConstraints.VERTICAL;
+        panel.setBackground(Color.WHITE);
 
         ArrayList<Lek> sviLekovi = Lekovi.getInstance().getLista();
         int brojLekova = sviLekovi.size();
@@ -34,18 +37,24 @@ public class IzaberiLek extends JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 1;
+        lekovi.setForeground(Main.tamnoPlava);
+        lekovi.setBackground(Main.nebeskoPlava);
         panel.add(lekovi, gridBagConstraints);
 
         kolicina = new JTextField(5);
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 1;
+        kolicina.setBackground(Main.nebeskoPlava);
+        kolicina.setForeground(Main.tamnoPlava);
         panel.add(kolicina, gridBagConstraints);
 
         JButton dodaj = new JButton("Dodaj izabrani lek i kolicinu");
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
+        dodaj.setBackground(Main.tamnoPlava);
+        dodaj.setForeground(Color.WHITE);
         dodaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

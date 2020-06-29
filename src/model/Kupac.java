@@ -15,4 +15,16 @@ public class Kupac implements Serializable {
         this.prezime = prezime;
         this.sifraKupca = sifraKupca;
     }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public Integer getSifraKupca() {
+        return sifraKupca;
+    }
 }

@@ -2,7 +2,6 @@ package kontroler;
 
 import model.Lek;
 import model.Lekovi;
-import view.DijalogPretragaLekova;
 import view.DijalogPretragaLekovaOpseg;
 
 import javax.swing.table.DefaultTableModel;

@@ -4,7 +4,6 @@ import model.Korisnici;
 import model.Korisnik;
 import view.GlavniEkran;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Login {

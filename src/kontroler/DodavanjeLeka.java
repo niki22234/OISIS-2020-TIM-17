@@ -1,7 +1,5 @@
 package kontroler;
 
-import model.Korisnici;
-import model.Korisnik;
 import model.Lek;
 import model.Lekovi;
 import view.DodajLek;
@@ -22,6 +20,13 @@ public class DodavanjeLeka implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String sifraLeka = dijalog.getSifraUnos().getText();
+        ArrayList<Lek> lista = Lekovi.getInstance().getLista();
+        for(int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).getSifra().equalsIgnoreCase(sifraLeka)) {
+                dijalog.getPoruka().setText("Sifra leka vec postoji!");
+                return;
+            }
+        }
         String imeLeka = dijalog.getImeUnos().getText();
         String proizvodjac = dijalog.getProizvodjacUnos().getText();
         String izdajeSeNaRecept = dijalog.getIzdajeSeNaReceptUnos().getSelectedItem().toString();
@@ -34,7 +39,6 @@ public class DodavanjeLeka implements ActionListener {
         DefaultTableModel model = Lekovi.getInstance().getModel();
         model.addRow(lek);
         Lek lekModel = new Lek(sifraLeka, imeLeka, proizvodjac, izdajeSeNaReceptBool, cena);
-        ArrayList<Lek> lista = Lekovi.getInstance().getLista();
         lista.add(lekModel);
         Lekovi.getInstance().setPodaci(lista);
         dijalog.dispose();

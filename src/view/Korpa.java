@@ -182,6 +182,8 @@ public class Korpa extends JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 1;
+        odustani.setBackground(Main.tamnoPlava);
+        odustani.setForeground(Color.WHITE);
         panelBot.add(odustani, gridBagConstraints);
 
         kupovina = new JButton("Kupovina");
@@ -189,6 +191,8 @@ public class Korpa extends JDialog {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 1;
+        kupovina.setBackground(Main.tamnoPlava);
+        kupovina.setForeground(Color.WHITE);
         panelBot.add(kupovina, gridBagConstraints);
 
         panel.add(panelBot, BorderLayout.SOUTH);

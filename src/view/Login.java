@@ -6,8 +6,6 @@ import kontroler.Logovanje;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Login extends JDialog {
 
@@ -17,11 +15,13 @@ public class Login extends JDialog {
     public JTextField korisnickoImeUnos;
     public JTextField passwordUnos;
     public JButton potvrda;
+    int poksaj = 0;
 
     public Login(Frame parent) {
         super(parent, "Login", true);
         this.setBackground(new Color(1, 74, 129));
         this.setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -47,6 +47,7 @@ public class Login extends JDialog {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 1;
         korisnickoImeUnos.setBackground(Main.nebeskoPlava);
+        korisnickoImeUnos.setForeground(Main.tamnoPlava);
         panel.add(korisnickoImeUnos, gridBagConstraints);
 
         password = new JLabel("Password: ");
@@ -61,6 +62,7 @@ public class Login extends JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 1;
         passwordUnos.setBackground(Main.nebeskoPlava);
+        passwordUnos.setForeground(Main.tamnoPlava);
         panel.add(passwordUnos, gridBagConstraints);
 
         panel.setBorder(new EmptyBorder(30,10,10,10));
@@ -107,5 +109,13 @@ public class Login extends JDialog {
 
     public JTextField getPasswordUnos() {
         return passwordUnos;
+    }
+
+    public int getPoksaj() {
+        return poksaj;
+    }
+
+    public void setPoksaj(int poksaj) {
+        this.poksaj = poksaj;
     }
 }
